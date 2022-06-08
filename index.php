@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Az oldal címe</title>
-    <link href="res/style.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
