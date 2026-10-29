@@ -1,127 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-    <meta name="author" content="Sandor Maro" />
-    <meta
-      name="keywords"
-      content="Sandor, Maro, CW, portfolio, web, development"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles/index.css" />
-    <title>Sandor Maro's CW</title>
-  </head>
-  <body class="body">
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="hero">
-        <h1>Hi, I'm Máró Sándor</h1>
-        <p>
-          I'm a software developer with experience in Java, React, and Linux
-          system administration. Passionate about creating efficient and
-          creative solutions.
-        </p>
+<html lang="hu" data-mode="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Máró Sándor – Portfolio</title>
+  <meta name="description" content="Máró Sándor frontend fejlesztő portfolioja: egy működő terminál és egy élő profilpanel.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Villanásmentes témaválasztás: a CSS betöltése előtt beállítjuk a módot.
+    (function () {
+      try {
+        var p = new URLSearchParams(location.search), d = document.documentElement;
+        var m = p.get('mode') || localStorage.getItem('mode');
+        var light = matchMedia('(prefers-color-scheme: light)').matches;
+        d.dataset.mode = m === 'light' || m === 'dark' ? m : light ? 'light' : 'dark';
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body data-view="terminal">
+  <header class="top">
+    <a class="brand" href="#">máró.sándor<span class="caret">_</span></a>
+    <div class="tools">
+      <div class="langs" role="group" data-aria-hu="Nyelv" data-aria-en="Language" aria-label="Nyelv">
+        <button type="button" data-lang-btn="hu" aria-pressed="true">HU</button>
+        <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
       </div>
-    </header>
+      <button type="button" class="mode-btn" id="mode-btn" aria-label="Világos mód">☀</button>
+      <div class="tabs" role="group" data-aria-hu="Nézet" data-aria-en="View" aria-label="Nézet">
+        <button type="button" data-view-btn="terminal" aria-pressed="true" data-hu="Terminál" data-en="Terminal">Terminál</button>
+        <button type="button" data-view-btn="panel" aria-pressed="false" data-hu="Profil" data-en="Profile">Profil</button>
+      </div>
+    </div>
+  </header>
 
-    <main>
-      <article>
-        <section id="about" class="title">
-          <h2>About Me</h2>
-          <p>
-            I'm an enthusiastic developer with a background in software
-            engineering. I'm passionate about building impactful projects,
-            exploring new technologies, and solving challenging problems. I
-            specialize in Java development, server administration, and creating
-            dynamic web interfaces.
-          </p>
-        </section>
+  <main class="workspace">
+    <section class="termcol">
+      <div class="window" id="term" data-aria-hu="Interaktív terminál" data-aria-en="Interactive terminal" aria-label="Interaktív terminál">
+        <div class="chrome">
+          <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="url">maro.dev <em>· terminal</em></span>
+          <span class="spacer"></span>
+        </div>
+        <div class="out" id="out" role="log" aria-live="polite"></div>
+        <form class="prompt" id="form" autocomplete="off" action="#" onsubmit="return false">
+          <label id="ps1" for="cmd"></label>
+          <input id="cmd" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Command">
+        </form>
+      </div>
+      <div class="chips" id="chips" data-aria-hu="Gyorsparancsok" data-aria-en="Quick commands" aria-label="Gyorsparancsok">
+        <button type="button" data-run="help">help</button>
+        <button type="button" data-run="about">about</button>
+        <button type="button" data-run="skills">skills</button>
+        <button type="button" data-run="projects">projects</button>
+        <button type="button" data-run="repos">repos</button>
+        <button type="button" data-run="send">send</button>
+        <button type="button" data-run="games">games</button>
+      </div>
+    </section>
 
-        <section id="projects">
-          <h2>Projects</h2>
-          <div class="project">
-            <h3>RCON GUI for Game Servers</h3>
-            <p>
-              An RCON GUI management tool for ARK, Soulmask, Conan Exiles, and
-              Satisfactory servers, developed using JavaFX. It features
-              responsive design, server settings configuration, and system theme
-              integration.
-            </p>
-          </div>
-          <div class="project">
-            <h3>Node.js Backend System</h3>
-            <p>
-              A Node.js backend application for managing user accounts,
-              implementing RESTful APIs, and focusing on security and
-              scalability for account management services.
-            </p>
-          </div>
-        </section>
+    <aside class="panel" id="panel" aria-label="Profile"></aside>
+  </main>
 
-        <section id="skills">
-          <h2>Skills</h2>
-          <ul>
-            <li>Java & JavaFX Development</li>
-            <li>React Framework & JavaScript</li>
-            <li>Linux System Administration (Manjaro, Kali)</li>
-            <li>Node.js & Backend Development</li>
-            <li>GitHub, Git Version Control</li>
-            <li>Game Server Administration (ARK, Satisfactory, Soulmask)</li>
-          </ul>
-        </section>
-
-        <section id="contact">
-          <h2>Contact</h2>
-          <p>
-            If you'd like to get in touch, feel free to reach me via email or
-            connect on LinkedIn:
-          </p>
-          <ul>
-            <li>
-              Email:
-              <a href="mailto:marosandor@example.com">marosandor@example.com</a>
-            </li>
-            <li>
-              LinkedIn:
-              <a href="https://www.linkedin.com/in/marosandor"
-                >linkedin.com/in/marosandor</a
-              >
-            </li>
-          </ul>
-        </section>
-      </article>
-    </main>
-
-    <footer class="footer" id="footer">
-      <p>&copy; 2024 Máró Sándor. All rights reserved.</p>
-    </footer>
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"
-    ></script>
-  </body>
+  <noscript><p class="nojs">JavaScript required / A terminálhoz JavaScript kell. <a href="mailto:marosandor2001@gmail.com">marosandor2001@gmail.com</a></p></noscript>
+  <script src="data.js"></script>
+  <script src="lang.js"></script>
+  <script src="theme.js"></script>
+  <script src="ascii.js"></script>
+  <script src="extras.js"></script>
+  <script src="features.js"></script>
+  <script src="engine.js"></script>
+  <script src="panel.js"></script>
+  <script src="main.js"></script>
+  <script>
+    // Diagnosztika: ha a szkriptek nem töltődtek be, ezt látni fogod a képernyőn.
+    window.addEventListener('load', () => {
+      const out = document.getElementById('out');
+      if (out && !out.children.length) out.textContent = 'Error: the scripts did not load / A szkriptek nem töltődtek be. Open the console (F12) and send me the error.';
+    });
+  </script>
+</body>
 </html>

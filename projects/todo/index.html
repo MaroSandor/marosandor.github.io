@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo</title>
+  <style>
+    :root { --bg: #fff; --fg: #1b2420; --muted: #6a776f; --line: #dfe5e0; --accent: #3f7d1a; --card: #f4f6f2; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #0e1610; --fg: #e3ebe5; --muted: #8d9a8f; --line: #25322a; --accent: #c8f169; --card: #152019; } }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font: 15px/1.5 system-ui, sans-serif; background: var(--bg); color: var(--fg); padding: 1rem; }
+    h1 { font-size: 1.05rem; margin-bottom: .7rem; }
+    form { display: flex; gap: .5rem; margin-bottom: .8rem; }
+    input[type=text] { flex: 1; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: inherit; font: inherit; }
+    button { padding: .55rem .9rem; border: 0; border-radius: 8px; background: var(--accent); color: var(--bg); font: inherit; font-weight: 600; cursor: pointer; }
+    ul { list-style: none; display: grid; gap: .4rem; }
+    li { display: flex; align-items: center; gap: .6rem; padding: .5rem .7rem; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+    li.done span { text-decoration: line-through; color: var(--muted); }
+    li span { flex: 1; word-break: break-word; }
+    li button { background: none; color: var(--muted); padding: .1rem .4rem; font-size: 1.1rem; }
+    .meta { margin-top: .7rem; font-size: .8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <h1 id="title"></h1>
+  <form id="f"><input type="text" id="t" maxlength="120" autocomplete="off"><button id="add"></button></form>
+  <ul id="list"></ul>
+  <p class="meta" id="meta"></p>
+  <script>
+    // Minta-projekt: az "élő demó" funkció bemutatására (run todo). Cseréld le a saját munkáidra.
+    const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'hu';
+    const T = { hu: ['Teendők', 'Mit kell csinálni?', 'Hozzáad', 'maradt', 'Nincs teendő. 🎉'], en: ['Todos', 'What needs doing?', 'Add', 'left', 'Nothing to do. 🎉'] }[lang];
+    const KEY = 'demo-todo';
+    let items = [];
+    try { items = JSON.parse(localStorage.getItem(KEY)) || []; } catch {}
+    const $ = id => document.getElementById(id);
+    $('title').textContent = T[0]; $('t').placeholder = T[1]; $('add').textContent = T[2];
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(items)); } catch {} render(); };
+    function render() {
+      $('list').innerHTML = '';
+      items.forEach((it, i) => {
+        const li = document.createElement('li'); li.className = it.done ? 'done' : '';
+        const cb = Object.assign(document.createElement('input'), { type: 'checkbox', checked: it.done });
+        cb.onchange = () => { it.done = cb.checked; save(); };
+        const sp = Object.assign(document.createElement('span'), { textContent: it.text });
+        const rm = Object.assign(document.createElement('button'), { textContent: '×', title: 'delete' });
+        rm.onclick = () => { items.splice(i, 1); save(); };
+        li.append(cb, sp, rm); $('list').append(li);
+      });
+      const left = items.filter(i => !i.done).length;
+      $('meta').textContent = items.length ? `${left} ${T[3]}` : T[4];
+    }
+    $('f').onsubmit = e => { e.preventDefault(); const v = $('t').value.trim(); if (v) { items.push({ text: v, done: false }); $('t').value = ''; save(); } };
+    render();
+  </script>
+</body>
+</html>
