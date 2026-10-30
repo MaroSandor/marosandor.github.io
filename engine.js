@@ -26,7 +26,7 @@
       const none = L('(még nincs megadva)', '(not set yet)');
       fs = {
         'about.md': D.about.join('\n\n'),
-        'skills.txt': D.skills.map(s => `${s.name.padEnd(11)} ${bar(s.level)} ${s.level}%`).join('\n'),
+        'skills.txt': D.skills.map(s => `${s.name.padEnd(11)} ${s.level.padEnd(15)} ${s.share ? s.share + L('% a GitHub-kódból', '% of GitHub code') : ''}`.trimEnd()).join('\n'),
         'contact.txt': `E-mail:   ${D.contact.email}\nGitHub:   ${githubUrl() ?? none}\nLinkedIn: ${D.contact.linkedin ?? none}`,
         projects: Object.fromEntries(D.projects.map(p => [p.id + '.md', `# ${p.title}\nStack: ${p.stack}\n\n${p.desc}\n\nLink: ${p.url}`])),
       };

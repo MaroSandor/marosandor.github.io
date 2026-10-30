@@ -23,7 +23,7 @@ window.createPanel = function createPanel({ exec }) {
     el.innerHTML = `
       <section class="card profile" id="sec-profile">
         <div class="avatar${data.photo ? ' has-photo' : ''}">${avatar}</div>
-        <h2 class="name">${esc(data.name)}</h2>
+        <h1 class="name">${esc(data.name)}</h1>
         <p class="role">${esc(data.role)}</p>
         <p class="status"><i></i>${esc(data.status)}</p>
         <div class="links">${links}</div>
@@ -36,7 +36,8 @@ window.createPanel = function createPanel({ exec }) {
 
       <section class="card" id="sec-skills">
         <h3>${L('Készségek', 'Skills')}</h3>
-        ${data.skills.map(s => `<div class="sk"><span>${esc(s.name)}</span><div class="track"><i style="--w:${s.level}%"></i></div><b>${s.level}%</b></div>`).join('')}
+        ${data.skills.map(s => `<div class="sk"><span>${esc(s.name)}</span><em class="lv">${esc(s.level)}</em><b>${s.share ? s.share + '%' : ''}</b></div>`).join('')}
+        <p class="hint">${L('A százalék a GitHub-repóim kódjában mért arány.', 'Percentages show the share of my GitHub code.')}</p>
       </section>
 
       <section class="card" id="sec-projects">

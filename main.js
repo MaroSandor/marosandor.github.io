@@ -26,8 +26,8 @@ function refreshChrome() {
   modeBtn.title = modeBtn.getAttribute('aria-label');
   document.querySelectorAll('[data-lang-btn]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.langBtn === Lang.get())));
   const d = Lang.content();
-  document.title = `${d.name} – Portfolio`;
-  document.querySelector('meta[name="description"]').content = L(`${d.name} ${d.role.toLowerCase()} portfolioja: egy működő terminál és egy élő profilpanel.`, `Portfolio of ${d.name}, ${d.role.toLowerCase()}: a working terminal and a live profile panel.`);
+  document.title = `${d.name} – ${L('Junior mobil- és backend fejlesztő', 'Junior mobile & backend developer')}`;
+  document.querySelector('meta[name="description"]').content = L(`${d.name} junior ${d.role.toLowerCase()} portfolioja: Java, C#, Python és JavaScript projektek a GitHubról, egy működő terminállal és élő profilpanellel.`, `Portfolio of ${d.name}, junior ${d.role.toLowerCase()}: Java, C#, Python and JavaScript projects from GitHub, with a working terminal and a live profile panel.`);
 }
 Theme.on(refreshChrome);
 

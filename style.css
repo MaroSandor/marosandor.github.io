@@ -137,6 +137,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .sk { display: grid; grid-template-columns: 6rem 1fr 2.6rem; gap: .7rem; align-items: center; margin-bottom: .55rem; font-size: .85rem; }
 .sk b { font-weight: 500; font-family: var(--mono); font-size: .75rem; color: var(--dim); text-align: right; }
+.sk .lv { font-style: normal; color: var(--accent); }
 .track { height: 7px; background: var(--line); border-radius: 99px; overflow: hidden; }
 .track i { display: block; height: 100%; width: var(--w); background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 99px; transform-origin: left; }
 #sec-skills.play .track i { animation: grow 1.1s cubic-bezier(.2, .8, .2, 1); }

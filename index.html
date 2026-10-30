@@ -3,8 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Máró Sándor – Portfolio</title>
-  <meta name="description" content="Máró Sándor frontend fejlesztő portfolioja: egy működő terminál és egy élő profilpanel.">
+  <title>Máró Sándor – Junior mobil- és backend fejlesztő</title>
+  <meta name="description" content="Máró Sándor junior mobil- és backend fejlesztő portfolioja: Java, C#, Python és JavaScript projektek a GitHubról, egy működő terminállal és élő profilpanellel.">
+  <meta name="author" content="Máró Sándor">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://marosandor.hu/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Máró Sándor">
+  <meta property="og:locale" content="hu_HU">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:url" content="https://marosandor.hu/">
+  <meta property="og:title" content="Máró Sándor – Junior mobil- és backend fejlesztő">
+  <meta property="og:description" content="Junior mobil- és backend fejlesztő portfolio egy működő terminállal: projektek, készségek és elérhetőség.">
+  <meta property="og:image" content="https://marosandor.hu/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Máró Sándor karikatúra-portréja">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Máró Sándor – Junior mobil- és backend fejlesztő">
+  <meta name="twitter:description" content="Junior mobil- és backend fejlesztő portfolio egy működő terminállal: projektek, készségek és elérhetőség.">
+  <meta name="twitter:image" content="https://marosandor.hu/og-image.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Máró Sándor",
+    "alternateName": "Sándor Máró",
+    "jobTitle": "Junior mobil- és backend fejlesztő",
+    "url": "https://marosandor.hu/",
+    "image": "https://marosandor.hu/profile.webp",
+    "email": "mailto:marosandor2001@gmail.com",
+    "sameAs": ["https://github.com/MaroSandor"],
+    "knowsAbout": ["JavaScript", "HTML", "CSS", "Java", "C#", "Python", "Git"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -63,7 +95,39 @@
       </div>
     </section>
 
-    <aside class="panel" id="panel" aria-label="Profile"></aside>
+    <!-- Statikus tartalom keresőknek és JS nélkül; a panel.js betöltéskor lecseréli. Tartsd szinkronban a data.js-sel. -->
+    <aside class="panel" id="panel" aria-label="Profile">
+      <section class="card profile">
+        <h1 class="name">Máró Sándor</h1>
+        <p class="role">Mobil- és backend fejlesztő</p>
+      </section>
+      <section class="card">
+        <h3>Rólam</h3>
+        <p>Máró Sándor vagyok, pályakezdő mobilalkalmazás- és backend fejlesztő. Java, C# és Python alapokon építek alkalmazásokat, a szakdolgozatomban mobilfejlesztéssel foglalkoztam.</p>
+        <p>A feladatokban a működő, jól karbantartható megoldást tartom a legfontosabbnak.</p>
+        <p>Az LLM-eket a fejlesztés egészében használom, a kódot viszont mindig átnézem, a biztonsági és architektúra-döntéseket pedig magam hozom.</p>
+        <p>Junior pozíciót keresek.</p>
+      </section>
+      <section class="card">
+        <h3>Készségek</h3>
+        <p>JavaScript, HTML, CSS, Java, C#, Python, Git.</p>
+      </section>
+      <section class="card">
+        <h3>Projektek</h3>
+        <ul>
+          <li><a href="https://github.com/MaroSandor/rf4-magyar-forum">RF4 magyar fórum</a> – JavaScript</li>
+          <li><a href="https://github.com/MaroSandor/konyvtar-kezelo-webapp">Könyvtárkezelő webapp</a> – C#, HTML, CSS</li>
+          <li><a href="https://github.com/MaroSandor/szakdolgozat">Szakdolgozat</a> – Java, Swift, TypeScript</li>
+          <li><a href="https://github.com/MaroSandor/java-algorithms">Java algoritmusok</a> – Java</li>
+          <li><a href="https://github.com/MaroSandor/hibajegy-lacinak">Hibajegykezelő</a> – Python</li>
+        </ul>
+      </section>
+      <section class="card">
+        <h3>Kapcsolat</h3>
+        <a class="mail" href="mailto:marosandor2001@gmail.com">marosandor2001@gmail.com</a>
+        · <a href="https://github.com/MaroSandor">GitHub</a>
+      </section>
+    </aside>
   </main>
 
   <noscript><p class="nojs">JavaScript required / A terminálhoz JavaScript kell. <a href="mailto:marosandor2001@gmail.com">marosandor2001@gmail.com</a></p></noscript>
